@@ -1,0 +1,73 @@
+{
+  "entryPagePath": "pages/home",
+  "pages": [
+    {
+      "path": "pages/timesheet",
+      "type": "home",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "工时"
+      }
+    },
+    {
+      "path": "pages/overview-ucharts",
+      "type": "home",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "工时概览"
+      }
+    },
+    {
+      "path": "pages/mine",
+      "type": "home",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "我的"
+      }
+    },
+    {
+      "path": "pages/home",
+      "type": "home",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "小帮手"
+      }
+    },
+    {
+      "path": "pages/bookkeeping",
+      "type": "home",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "账本"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationStyle": "default",
+    "navigationBarTitleText": "小帮手",
+    "navigationBarBackgroundColor": "@navigationBarBackgroundColor",
+    "backgroundColor": "@backgroundColor",
+    "navigationBarTextStyle": "@navigationBarTextStyle"
+  },
+  "subPackages": [],
+  "tabBar": {
+    "color": "@color",
+    "selectedColor": "@selectedColor",
+    "backgroundColor": "@tabBackgroundColor",
+    "borderStyle": "@borderStyle",
+    "list": [
+      {
+        "pagePath": "pages/home",
+        "text": "首页",
+        "iconPath": "@homeIconPath",
+        "selectedIconPath": "@homeSelectedIconPath"
+      },
+      {
+        "pagePath": "pages/mine",
+        "text": "我的",
+        "iconPath": "@mineIconPath",
+        "selectedIconPath": "@mineSelectedIconPath"
+      }
+    ]
+  }
+}
