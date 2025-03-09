@@ -6,15 +6,7 @@
       "type": "home",
       "style": {
         "navigationStyle": "default",
-        "navigationBarTitleText": "工时"
-      }
-    },
-    {
-      "path": "pages/overview-ucharts",
-      "type": "home",
-      "style": {
-        "navigationStyle": "default",
-        "navigationBarTitleText": "工时概览"
+        "navigationBarTitleText": "工时日期"
       }
     },
     {
@@ -38,7 +30,15 @@
       "type": "home",
       "style": {
         "navigationStyle": "default",
-        "navigationBarTitleText": "账本"
+        "navigationBarTitleText": "消费记录"
+      }
+    },
+    {
+      "path": "pages/consumption",
+      "type": "page",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "消费记录"
       }
     }
   ],

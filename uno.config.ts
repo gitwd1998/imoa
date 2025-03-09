@@ -17,8 +17,8 @@ export default defineConfig({
       success: '#34D19D',
       warning: '#F0883A',
       error: '#FA4350',
-      info: '#909399'
-    }
+      info: '#909399',
+    },
   },
   presets: [
     presetUni(),

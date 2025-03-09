@@ -5,7 +5,7 @@ import lCharts from '@/uni_modules/lime-echart_1.0.0/components/l-echart/l-echar
 // import * as echarts from "echarts";
 
 import { onShow } from '@dcloudio/uni-app'
-import { BarChart } from 'echarts/charts'
+import { PieChart } from 'echarts/charts'
 // 组件
 import { DatasetComponent, GridComponent, LegendComponent, TooltipComponent } from 'echarts/components'
 // 2. 按需引入
@@ -15,25 +15,26 @@ import { LabelLayout, UniversalTransition } from 'echarts/features'
 
 // 引入 Canvas 渲染器，注意引入 CanvasRenderer 是必须的一步
 import { CanvasRenderer } from 'echarts/renderers'
+import { groupBy, mapValues, sumBy } from 'lodash'
 import { nextTick, ref, watchEffect } from 'vue'
 
 const props = defineProps<{
-  timeSheet: any[]
+  consumptionRecord: ConsumptionRecordItem[]
 }>()
 
 echarts.use([
-  BarChart,
+  PieChart,
   TooltipComponent,
-  GridComponent,
+  // GridComponent,
   DatasetComponent,
   // LegendComponent,
-  LabelLayout,
+  // LabelLayout,
   UniversalTransition,
   CanvasRenderer,
 ])
 
 watchEffect(() => {
-  drawCharts(props.timeSheet)
+  drawCharts(props.consumptionRecord)
 })
 
 const chartRef = ref(null)
@@ -41,49 +42,39 @@ const chartRef = ref(null)
 function drawCharts(source = []) {
   chartRef.value.setOption({
     dataset: {
-      dimensions: ['workingDate', 'workingHours'], // 数据集字段映射
-      source,
+      dimensions: ['type', 'amount'], // 数据集字段映射
+      source: Object.values(mapValues(groupBy(props.consumptionRecord, 'consumptionType'), group => ({
+        type: group[0].consumptionType,
+        amount: sumBy(group, item => +item.consumptionAmount).toFixed(2),
+      }))),
     },
     tooltip: {
-      trigger: 'axis',
-      valueFormatter: (value: string) => `${value} h`,
-      axisPointer: {
-        type: 'shadow',
-      },
+      trigger: 'item',
+      valueFormatter: (value: string) => `${value} 元`,
     },
-    // legend: {},
-    grid: {},
-    yAxis: {
-      name: '工时',
-      type: 'value',
-      axisLabel: {
-        formatter: '{value} h',
-      },
+    label: {
+      formatter: '{b}\n{d}%',
+      width: 100,
     },
-    xAxis: {
-      name: '日期',
-      type: 'category',
-      axisLabel: {
-        showMaxLabel: true,
-        showMinLabel: true,
-        formatter: (value: string) => value.slice(8, 10),
-      },
-    },
+    // legend: {
+    //   top: 'bottom',
+    // },
+    // grid: {},
     series: {
-      name: '工时',
-      type: 'bar',
+      name: '消费类型',
+      type: 'pie',
     },
   })
 }
 onShow(() => {
   nextTick(() => {
     chartRef.value.init(echarts).then(() => {
-      drawCharts(props.timeSheet)
+      drawCharts(props.consumptionRecord)
     })
   })
 })
 </script>
 
 <template>
-  <l-charts ref="chartRef" is-disable-scroll class="w-100% h-300px" />
+  <l-charts ref="chartRef" is-disable-scroll />
 </template>

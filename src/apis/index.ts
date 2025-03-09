@@ -7,7 +7,7 @@ export function getuserphonenumber(params: any) {
   return request.get('/miniprograme/getuserphonenumber', { params })
 }
 
-export function selectWorkingHours(data: any) {
+export const selectWorkingHours: SelectWorkingHoursApi = (data) => {
   return request({
     method: 'post',
     url: '/workingHours/select',
@@ -35,6 +35,30 @@ export function deleteWorkingHours(params: any) {
   return request({
     method: 'get',
     url: '/workingHours/delete',
+    params,
+  })
+}
+
+export const consumptionRecordSelect: ConsumptionRecordSelectApi = (params) => {
+  return request({
+    method: 'get',
+    url: '/consumptionRecord/select',
+    params,
+  })
+}
+
+export const consumptionRecordSave: ConsumptionRecordSaveApi = (data) => {
+  return request({
+    method: 'post',
+    url: '/consumptionRecord/save',
+    data,
+  })
+}
+
+export const consumptionRecordDelete: ConsumptionRecordDeleteApi = (params) => {
+  return request({
+    method: 'delete',
+    url: '/consumptionRecord/delete',
     params,
   })
 }

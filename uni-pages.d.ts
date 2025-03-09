@@ -5,10 +5,10 @@
 
 interface NavigateToOptions {
   url: "/pages/timesheet" |
-       "/pages/overview-ucharts" |
        "/pages/mine" |
        "/pages/home" |
-       "/pages/bookkeeping";
+       "/pages/bookkeeping" |
+       "/pages/consumption";
 }
 interface RedirectToOptions extends NavigateToOptions {}
 

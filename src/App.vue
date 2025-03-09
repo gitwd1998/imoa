@@ -9,10 +9,10 @@ onLaunch(async () => {
       uni.setStorageSync('Authorization', res.data?.openid)
       uni.hideLoading()
     })
-  }).catch(async (err) => {
+  }).catch((err) => {
     console.error(err)
-    await uni.hideLoading()
-    await uni.showToast({
+    uni.hideLoading()
+    uni.showToast({
       icon: 'none',
       mask: true,
       title: err.errMsg,

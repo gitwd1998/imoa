@@ -16,13 +16,13 @@ request.interceptors.request.use(
   (request) => {
     const pages = getCurrentPages()
     const currentUrl = pages[pages.length - 1]?.route || 'pages/home'
-    const XDtsToken = uni.getStorageSync('X-Dts-Token')
-    // if (!XDtsToken) uni.redirectTo({
+    const Authorization = uni.getStorageSync('Authorization')
+    // if (!Authorization) uni.redirectTo({
     //   url: '/oauth/login?redirectUrl=' + encodeURIComponent(currentUrl)
     // })
     // console.log('request', request)
     request.headers['Current-Url'] = currentUrl
-    request.headers['X-Dts-Token'] = XDtsToken
+    request.headers['Authorization'] = Authorization
     return Promise.resolve(request)
   },
   (error) => {

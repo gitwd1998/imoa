@@ -1,11 +1,10 @@
 import type { App } from 'vue'
 import dayjs from 'dayjs'
-import toArray from 'dayjs/plugin/toArray'
-import { PluginLunar } from "dayjs-plugin-lunar";
-
+import { PluginLunar } from 'dayjs-plugin-lunar'
+import isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
 
 export default (app: App<Element>) => {
   dayjs.extend(PluginLunar)
-  dayjs.extend(toArray)
+  dayjs.extend(isSameOrBefore)
   app.config.globalProperties.$day = dayjs
 }

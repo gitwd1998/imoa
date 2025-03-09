@@ -7,11 +7,18 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    OverView: typeof import('./src/components/OverView.vue')['default']
+    ConsumptionOverView: typeof import('./src/components/ConsumptionOverView.vue')['default']
+    TimesheetOverView: typeof import('./src/components/TimesheetOverView.vue')['default']
     WdButton: typeof import('wot-design-uni/components/wd-button/wd-button.vue')['default']
     WdCell: typeof import('wot-design-uni/components/wd-cell/wd-cell.vue')['default']
     WdCellGroup: typeof import('wot-design-uni/components/wd-cell-group/wd-cell-group.vue')['default']
     WdConfigProvider: typeof import('wot-design-uni/components/wd-config-provider/wd-config-provider.vue')['default']
     WdFloatingPanel: typeof import('wot-design-uni/components/wd-floating-panel/wd-floating-panel.vue')['default']
+    WdForm: typeof import('wot-design-uni/components/wd-form/wd-form.vue')['default']
+    WdInput: typeof import('wot-design-uni/components/wd-input/wd-input.vue')['default']
+    WdMessageBox: typeof import('wot-design-uni/components/wd-message-box/wd-message-box.vue')['default']
+    WdPickerView: typeof import('wot-design-uni/components/wd-picker-view/wd-picker-view.vue')['default']
+    WdStatusTip: typeof import('wot-design-uni/components/wd-status-tip/wd-status-tip.vue')['default']
+    WdSwipeAction: typeof import('wot-design-uni/components/wd-swipe-action/wd-swipe-action.vue')['default']
   }
 }
