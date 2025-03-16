@@ -8,57 +8,67 @@ export function getuserphonenumber(params: any) {
 }
 
 export const selectWorkingHours: SelectWorkingHoursApi = (data) => {
-  return request({
-    method: 'post',
-    url: '/workingHours/select',
-    data,
-  })
+  return request.post('/workingHours/select', data)
 }
 
 export function insertWorkingHours(data: any) {
-  return request({
-    method: 'post',
-    url: '/workingHours/insert',
-    data,
-  })
+  return request.post('/workingHours/insert', data)
 }
 
 export function updateWorkingHours(data: any) {
-  return request({
-    method: 'post',
-    url: '/workingHours/update',
-    data,
-  })
+  return request.post('/workingHours/update', data)
 }
 
 export function deleteWorkingHours(params: any) {
-  return request({
-    method: 'get',
-    url: '/workingHours/delete',
-    params,
-  })
+  return request.get('/workingHours/delete', { params })
 }
 
 export const consumptionRecordSelect: ConsumptionRecordSelectApi = (params) => {
-  return request({
-    method: 'get',
-    url: '/consumptionRecord/select',
-    params,
-  })
+  return request.get('/consumptionRecord/select', { params })
 }
 
 export const consumptionRecordSave: ConsumptionRecordSaveApi = (data) => {
-  return request({
-    method: 'post',
-    url: '/consumptionRecord/save',
-    data,
-  })
+  return request.post('/consumptionRecord/save', data)
 }
 
 export const consumptionRecordDelete: ConsumptionRecordDeleteApi = (params) => {
-  return request({
-    method: 'delete',
-    url: '/consumptionRecord/delete',
+  return request.delete('/consumptionRecord/delete', { params })
+}
+
+export const consumptionRecordDetail: ConsumptionRecordDetailApi = (params) => {
+  return request.get('/consumptionRecord/detail', { params })
+}
+
+export const consumptionRecordBatchSave: ConsumptionRecordBatchSaveApi = (data) => {
+  return request.post('/consumptionRecord/batchSave', data)
+}
+
+export const consumptionRecordExport: ConsumptionRecordExportApi = (params) => {
+  return request.download({
+    url: '/consumptionRecord/export',
     params,
+    responseType: 'arraybuffer',
   })
+}
+
+export const consumptionRecordImport: ConsumptionRecordImportApi = (filePath) => {
+  return request.upload({
+    url: '/consumptionRecord/export',
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+    filePath,
+  })
+}
+
+export const consumptionTypeSelect: ConsumptionTypeSelectApi = () => {
+  return request.get('/consumptionType/select')
+}
+
+export const consumptionTypeSave: ConsumptionTypeSaveApi = (data) => {
+  return request.post('/consumptionType/save', data)
+}
+
+export const consumptionTypeDelete: ConsumptionTypeDeleteApi = (params) => {
+  return request.delete('/consumptionType/delete', { params })
 }

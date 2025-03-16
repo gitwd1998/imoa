@@ -13,7 +13,7 @@ onLaunch(async () => {
     console.error(err)
     uni.hideLoading()
     uni.showToast({
-      icon: 'none',
+      icon: 'error',
       mask: true,
       title: err.errMsg,
     })
@@ -27,4 +27,8 @@ onUnhandledRejection(() => {})
 onThemeChange(() => {})
 </script>
 
-<style></style>
+<style>
+page {
+  overflow: hidden;
+}
+</style>

@@ -17,7 +17,7 @@ const appList = ref([
     path: '/pages/bookkeeping',
   },
   {
-    name: '工时日历',
+    name: '工时记录',
     icon: 'calendar',
     path: '/pages/timesheet',
   },
@@ -25,7 +25,7 @@ const appList = ref([
 </script>
 
 <template>
-  <wd-cell-group :border="true">
-    <wd-cell v-for="(app, index) in appList" :key="index" :title="app.name" :icon="app.icon" is-link :to="app.path" />
-  </wd-cell-group>
+  <wd-grid :clickable="true" :border="true">
+    <wd-grid-item v-for="(app, index) in appList" :key="index" :text="app.name" :icon="app.icon" link-type="navigateTo" :url="app.path" />
+  </wd-grid>
 </template>

@@ -22,7 +22,7 @@ request.interceptors.request.use(
     // })
     // console.log('request', request)
     request.headers['Current-Url'] = currentUrl
-    request.headers['Authorization'] = Authorization
+    request.headers.Authorization = Authorization
     return Promise.resolve(request)
   },
   (error) => {
@@ -35,16 +35,30 @@ request.interceptors.response.use(
   (response) => {
     uni.hideLoading()
     const data: any = response.data || {}
-    const custom = response.config?.custom
-    if (data.size || data.code === 200 || data.code === '000000' || data.errno === 0) {
+    const { custom, adapter } = response.config || {}
+        
+    let succeeded = false
+    switch (adapter) {
+      case 'download':
+        succeeded = true
+        break;
+      case 'upload':
+        succeeded = true
+        break;
+      case 'request':
+        succeeded = data.size || data.code === 200 || data.code === '000000' || data.errno === 0
+        break;
+      default:
+        break;
+    }
+    if (succeeded) {
       // 成功
       return Promise.resolve(data)
-    }
-    else {
+    } else {
       // 如果没有显式定义custom的toast参数为false的话，默认对报错进行toast弹出提示
       if (custom.toast !== false) {
         uni.showToast({
-          icon: 'none',
+          icon: 'error',
           mask: true,
           title: data.message || data.errmsg || '系统异常，请稍后重试！',
         })
@@ -61,7 +75,7 @@ request.interceptors.response.use(
   },
   (error) => {
     uni.showToast({
-      icon: 'none',
+      icon: 'error',
       mask: true,
       title: `${error.statusCode}: ${error.errMsg}` || '系统异常，请稍后重试！',
     })

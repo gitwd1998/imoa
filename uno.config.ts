@@ -31,8 +31,32 @@ export default defineConfig({
       },
     }),
   ],
+  shortcuts: [
+    ['bg', 'light:bg-light dark:bg-dark'],
+    ['c', 'light:c-dark dark:c-light'],
+  ],
   transformers: [
     transformerDirectives(),
     transformerVariantGroup(),
+  ],
+  rules: [
+    [/^divider-([trbl])/, (match, { theme }) => {
+      return `
+        .${match[0]} {
+          position: relative;
+        }
+        .${match[0]}:not(:last-child)::after {
+          content: "";
+          position: absolute;
+          left: 15px;
+          right: 15px;
+          bottom: 0;
+          height: 1px;
+          background-color: ${theme.colors.info};
+          transform-origin: center bottom;
+          transform: scaleY(0.2);
+        }
+      `
+    }],
   ],
 })

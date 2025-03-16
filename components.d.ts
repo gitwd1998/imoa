@@ -7,18 +7,28 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    ConsumptionOverView: typeof import('./src/components/ConsumptionOverView.vue')['default']
+    CalendarView: typeof import('./src/components/CalendarView.vue')['default']
+    ConsumptionTimeView: typeof import('./src/components/ConsumptionTimeView.vue')['default']
+    ConsumptionTypeView: typeof import('./src/components/ConsumptionTypeView.vue')['default']
     TimesheetOverView: typeof import('./src/components/TimesheetOverView.vue')['default']
+    WdActionSheet: typeof import('wot-design-uni/components/wd-action-sheet/wd-action-sheet.vue')['default']
     WdButton: typeof import('wot-design-uni/components/wd-button/wd-button.vue')['default']
-    WdCell: typeof import('wot-design-uni/components/wd-cell/wd-cell.vue')['default']
     WdCellGroup: typeof import('wot-design-uni/components/wd-cell-group/wd-cell-group.vue')['default']
     WdConfigProvider: typeof import('wot-design-uni/components/wd-config-provider/wd-config-provider.vue')['default']
+    WdDivider: typeof import('wot-design-uni/components/wd-divider/wd-divider.vue')['default']
     WdFloatingPanel: typeof import('wot-design-uni/components/wd-floating-panel/wd-floating-panel.vue')['default']
     WdForm: typeof import('wot-design-uni/components/wd-form/wd-form.vue')['default']
+    WdGrid: typeof import('wot-design-uni/components/wd-grid/wd-grid.vue')['default']
+    WdGridItem: typeof import('wot-design-uni/components/wd-grid-item/wd-grid-item.vue')['default']
+    WdIcon: typeof import('wot-design-uni/components/wd-icon/wd-icon.vue')['default']
     WdInput: typeof import('wot-design-uni/components/wd-input/wd-input.vue')['default']
     WdMessageBox: typeof import('wot-design-uni/components/wd-message-box/wd-message-box.vue')['default']
     WdPickerView: typeof import('wot-design-uni/components/wd-picker-view/wd-picker-view.vue')['default']
+    WdRadio: typeof import('wot-design-uni/components/wd-radio/wd-radio.vue')['default']
+    WdRadioGroup: typeof import('wot-design-uni/components/wd-radio-group/wd-radio-group.vue')['default']
+    WdSegmented: typeof import('wot-design-uni/components/wd-segmented/wd-segmented.vue')['default']
     WdStatusTip: typeof import('wot-design-uni/components/wd-status-tip/wd-status-tip.vue')['default']
     WdSwipeAction: typeof import('wot-design-uni/components/wd-swipe-action/wd-swipe-action.vue')['default']
+    WdTag: typeof import('wot-design-uni/components/wd-tag/wd-tag.vue')['default']
   }
 }

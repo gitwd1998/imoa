@@ -36,9 +36,9 @@ watchEffect(() => {
   drawCharts(props.timeSheet)
 })
 
-const chartRef = ref(null)
+const chartRef = ref()
 
-function drawCharts(source = []) {
+function drawCharts(source: any[]) {
   chartRef.value.setOption({
     dataset: {
       dimensions: ['workingDate', 'workingHours'], // 数据集字段映射

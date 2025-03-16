@@ -11,7 +11,7 @@ uni.onThemeChange((res) => {
 </script>
 
 <template>
-  <WdConfigProvider :theme="theme">
+  <WdConfigProvider :custom-class="theme" :theme="theme">
     <KuRootView />
   </WdConfigProvider>
 </template>

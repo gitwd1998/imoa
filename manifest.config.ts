@@ -1,13 +1,25 @@
+import path from 'node:path'
 import { defineManifestConfig } from '@uni-helper/vite-plugin-uni-manifest'
+import { loadEnv } from 'vite'
+
+// eslint-disable-next-line node/prefer-global/process
+const env = loadEnv(process.env.NODE_ENV!, path.resolve(process.cwd(), 'env'))
+const {
+  VITE_APP_TITLE,
+  VITE_UNI_APPID,
+  VITE_WX_APPID,
+  VITE_APP_PUBLIC_BASE,
+  VITE_FALLBACK_LOCALE,
+} = env
 
 export default defineManifestConfig({
-  'name': '',
-  'appid': '',
+  'name': VITE_APP_TITLE,
+  'appid': VITE_UNI_APPID,
   'description': '',
   'versionName': '1.0.0',
   'versionCode': '100',
   'transformPx': false,
-  /* 5+App特有相关 */
+  'locale': VITE_FALLBACK_LOCALE,
   'app-plus': {
     usingComponents: true,
     nvueStyleCompiler: 'uni-app',
@@ -48,17 +60,21 @@ export default defineManifestConfig({
       sdkConfigs: {},
     },
   },
-  /* 快应用特有相关 */
   'quickapp': {},
-  /* 小程序特有相关 */
   'mp-weixin': {
-    appid: 'wx648d9141c2f66411',
+    appid: VITE_WX_APPID,
     setting: {
       urlCheck: false,
+      minified: true,
+      postcss: true,
+      es6: true,
     },
     usingComponents: true,
     darkmode: true,
     themeLocation: 'theme.json',
+    // https://uniapp.dcloud.net.cn/api/other/authorize.html
+    permission: {
+    }
   },
   'mp-alipay': {
     usingComponents: true,
@@ -72,6 +88,9 @@ export default defineManifestConfig({
   'h5': {
     darkmode: true,
     themeLocation: 'theme.json',
+    router: {
+      base: VITE_APP_PUBLIC_BASE,
+    },
   },
   'uniStatistics': {
     enable: false,

@@ -20,11 +20,11 @@ interface WorkingHoursItem {
   userId: string
   nickName: string | null
   hourlyWage: string | null
-  workingDate: Date | null
+  workingDate: string | null
   workingHours: string | number | null
-  createTime: Date | null
+  createTime: string | null
   createUser: string | null
-  updateTime: Date | null
+  updateTime: string | null
   updateUser: string | null
 }
 interface SelectWorkingHoursApi {
@@ -35,31 +35,80 @@ interface SelectWorkingHoursApi {
   }): Promise<ApiResponse<WorkingHoursItem[]>>
 }
 
-interface ConsumptionRecordItem {
-  id: number | string | null
-  userId: string | null
-  consumptionTime: Date | null
-  consumptionAmount: string | null
-  consumptionType: string | null
-  consumptionRemark: string | null
-  createTime?: Date | null
-  createUser?: string | null
-  updateTime?: Date | null
-  updateUser?: string | null
+/* ********************************************************************** */
+interface ConsumptionRecord<T = string> {
+  id: number | string
+  userId?: string
+  consumptionTime: T
+  consumptionAmount: string
+  consumptionType: string
+  consumptionRemark: string
+  createTime?: string
+  createUser?: string
+  updateTime?: string
+  updateUser?: string
 }
 
 interface ConsumptionRecordSelectApi {
   (params: {
     startDate: string
     endDate: string
-  }): Promise<ApiResponse<ConsumptionRecordItem[]>>
+  }): Promise<ApiResponse<ConsumptionRecord[]>>
 }
 
 interface ConsumptionRecordSaveApi {
-  (data: ConsumptionRecordItem): Promise<ApiResponse<void>>
+  (data: ConsumptionRecord): Promise<ApiResponse<void>>
 }
 
 interface ConsumptionRecordDeleteApi {
+  (params: {
+    id: string | number
+  }): Promise<ApiResponse<void>>
+}
+
+interface ConsumptionRecordBatchSaveApi {
+  (data: ConsumptionRecord[]): Promise<ApiResponse<void>>
+}
+interface ConsumptionRecordDetailApi {
+  (params: {
+    id: string | number
+  }): Promise<ApiResponse<ConsumptionRecord>>
+}
+
+interface ConsumptionRecordExportApi {
+  (params: {
+    startDate: string
+    endDate: string
+  }): Promise<{
+    filePath: string
+    tempFilePath: string
+  }>
+}
+
+interface ConsumptionRecordImportApi {
+  (filePath: string): Promise<ApiResponse<void>>
+}
+
+/* ********************************************************************** */
+interface ConsumptionType {
+  id: number | string
+  userId?: string
+  consumptionType: string
+  createTime?: string
+  createUser?: string
+  updateTime?: string
+  updateUser?: string
+}
+
+interface ConsumptionTypeSelectApi {
+  (): Promise<ApiResponse<ConsumptionType[]>>
+}
+
+interface ConsumptionTypeSaveApi {
+  (data: ConsumptionType): Promise<ApiResponse<void>>
+}
+
+interface ConsumptionTypeDeleteApi {
   (params: {
     id: string | number
   }): Promise<ApiResponse<void>>

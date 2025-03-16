@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "小帮手",
   "appid": "",
   "description": "",
   "versionName": "1.0.0",
@@ -44,11 +44,15 @@
   "mp-weixin": {
     "appid": "wx648d9141c2f66411",
     "setting": {
-      "urlCheck": false
+      "urlCheck": false,
+      "minified": true,
+      "postcss": true,
+      "es6": true
     },
     "usingComponents": true,
     "darkmode": true,
-    "themeLocation": "theme.json"
+    "themeLocation": "theme.json",
+    "permission": {}
   },
   "mp-alipay": {
     "usingComponents": true
@@ -63,8 +67,12 @@
     "enable": false
   },
   "vueVersion": "3",
+  "locale": "zh-Hans",
   "h5": {
     "darkmode": true,
-    "themeLocation": "theme.json"
+    "themeLocation": "theme.json",
+    "router": {
+      "base": "/"
+    }
   }
 }

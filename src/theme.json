@@ -1,34 +1,30 @@
 {
   "light": {
     "backgroundColor": "#ededed",
-    "backgroundColorBottom": "#ededed",
-    "backgroundColorTop": "#ededed",
     "backgroundTextStyle": "dark",
     "borderStyle": "black",
-    "color": "#303133",
+    "color": "#000000",
     "homeIconPath": "static/tabbar/home_dark.png",
     "homeSelectedIconPath": "static/tabbar/home_selected.png",
     "mineIconPath": "static/tabbar/mine_dark.png",
     "mineSelectedIconPath": "static/tabbar/mine_selected.png",
     "navigationBarBackgroundColor": "#ededed",
     "navigationBarTextStyle": "black",
-    "selectedColor": "#3C9CFF",
-    "tabBackgroundColor": "#f5f5f5"
+    "selectedColor": "#4d80f0",
+    "tabBackgroundColor": "#ededed"
   },
   "dark": {
     "backgroundColor": "#111111",
-    "backgroundColorBottom": "#000000",
-    "backgroundColorTop": "#000000",
     "backgroundTextStyle": "light",
     "borderStyle": "black",
-    "color": "#d1d1d1",
+    "color": "#ffffff",
     "homeIconPath": "static/tabbar/home_light.png",
     "homeSelectedIconPath": "static/tabbar/home_selected.png",
     "mineIconPath": "static/tabbar/mine_light.png",
     "mineSelectedIconPath": "static/tabbar/mine_selected.png",
     "navigationBarBackgroundColor": "#111111",
     "navigationBarTextStyle": "white",
-    "selectedColor": "#3C9CFF",
-    "tabBackgroundColor": "#1b1b1b"
+    "selectedColor": "#4d80f0",
+    "tabBackgroundColor": "#111111"
   }
 }

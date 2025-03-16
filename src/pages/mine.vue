@@ -12,4 +12,5 @@
 
 <template>
   <view>我的</view>
+  <button data-type="feedback">反馈</button>
 </template>
